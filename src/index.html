@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <button id="saveButton">저장하기</button>
+    <button id="loadButton">불러오기</button>
+    <input id="input">
+    <button id="addButton">추가하기</button>
+
+    <script>
+        $('#saveButton').click(function(){
+            let item = { list: 
+                [
+                    { name: 'foo', value: 'bar'} 
+                ]
+            };
+
+            $.ajax({
+                url: '/save',
+                method: 'POST',
+                data: { message: item }
+            })
+            .done(function(){
+                console.log('데이터 저장 성공');
+            })
+        })
+
+        $('#loadButton').click(function(){
+            $.ajax({
+                url: '/get',
+                method: 'POST'
+            })
+            .done(function(data){
+                console.log('데이터 불러오기 성공', data);
+            })
+        })
+
+        $('#addButton').click(function(){
+            let item = { name: 'foo', value: $('#input').val() }; 
+
+            $.ajax({
+                url: '/add',
+                method: 'POST',
+                data: { message: item }
+            })
+            .done(function(){
+                console.log('데이터 추가 성공');
+            })
+        })
+    </script>
+</body>
+</html>

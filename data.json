@@ -1,0 +1,16 @@
+{
+  "list": [
+    {
+      "name": "foo",
+      "value": "bar"
+    },
+    {
+      "name": "foo",
+      "value": "123"
+    },
+    {
+      "name": "foo",
+      "value": "456"
+    }
+  ]
+}
